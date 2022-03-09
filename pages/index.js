@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 // import styles from "../styles/Home.module.css";
 import LettersToExclude from "../src/components/Letter/LettersToExclude";
 import LettersToInclude from "../src/components/Letter/LettersToInclude";
@@ -268,7 +268,7 @@ export default function Home() {
     }
   };
   return (
-    <div className='App'>
+    <>
       <Head>
         <title>Find your Worldle</title>
         <meta
@@ -276,13 +276,13 @@ export default function Home() {
           content='Having trouble with your Wordle? Use Find your Wordle to help you solve and find your Wordle!'
         />
         <meta name='keywords' content='' />
-        <meta itemprop='name' content='Find your Worldle' />
+        <meta itemProp='name' content='Find your Worldle' />
         <meta
-          itemprop='description'
+          itemProp='description'
           content='Having trouble with your Wordle? Use Find your Wordle to help you solve and find your Wordle!'
         />
         <meta
-          itemprop='image'
+          itemProp='image'
           content='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Wordle_196_example.svg/220px-Wordle_196_example.svg.png'
         />
 
@@ -309,205 +309,206 @@ export default function Home() {
           content='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Wordle_196_example.svg/220px-Wordle_196_example.svg.png'
         />
       </Head>
-
-      <h1 className={`header ${searched ? "searched" : "not-searched"}`}>
-        Find Your Wordle
-      </h1>
-      {onlyYellows && possibleWords.length === 0 ? (
-        <div className='only-yellows-container'>
-          <p>Select your yellow letters:</p>
-          <div className='existent-letter-list'>
-            {allLetters.map((letter, index) => (
-              <OnlyYellowsLettersToInclude
-                letter={letter}
-                key={index}
-                selectOnlyYellowLetter={selectOnlyYellowLetter}
-                deselectOnlyYellowLetter={deselectOnlyYellowLetter}
-                possibleWords={possibleWords}
-              />
-            ))}
+      <div className='App'>
+        <h1 className={`header ${searched ? "searched" : "not-searched"}`}>
+          Find Your Wordle
+        </h1>
+        {onlyYellows && possibleWords.length === 0 ? (
+          <div className='only-yellows-container'>
+            <p>Select your yellow letters:</p>
+            <div className='existent-letter-list'>
+              {allLetters.map((letter, index) => (
+                <OnlyYellowsLettersToInclude
+                  letter={letter}
+                  key={index}
+                  selectOnlyYellowLetter={selectOnlyYellowLetter}
+                  deselectOnlyYellowLetter={deselectOnlyYellowLetter}
+                  possibleWords={possibleWords}
+                />
+              ))}
+            </div>
           </div>
+        ) : null}
+        {!onlyYellows ? <p>Enter your green letters here:</p> : null}
+        <form onSubmit={(e) => handleSubmit(e)}>
+          {!onlyYellows ? (
+            <div className='input-field'>
+              <input
+                type='text'
+                maxLength={1}
+                placeholder=''
+                value={firstLetter.toUpperCase()}
+                onFocus={() => setFirstLetter("")}
+                onChange={(e) => {
+                  setFirstLetter(e.target.value);
+                  handleFocus(e);
+                }}
+                onKeyDown={(e) => handleBackspace(e)}
+                className={`${
+                  firstLetter !== "?" && firstLetter.length > 0
+                    ? "input-entered"
+                    : "input-blank"
+                }`}
+              ></input>
+              <input
+                type='text'
+                maxLength={1}
+                placeholder=''
+                value={secondLetter.toUpperCase()}
+                onFocus={() => setSecondLetter("")}
+                onChange={(e) => {
+                  setSecondLetter(e.target.value);
+                  handleFocus(e);
+                }}
+                onKeyDown={(e) => handleBackspace(e)}
+                className={`${
+                  secondLetter !== "?" && secondLetter.length > 0
+                    ? "input-entered"
+                    : "input-blank"
+                }`}
+              ></input>
+              <input
+                type='text'
+                maxLength={1}
+                placeholder=''
+                value={thirdLetter.toUpperCase()}
+                onFocus={() => setThirdLetter("")}
+                onChange={(e) => {
+                  setThirdLetter(e.target.value);
+                  handleFocus(e);
+                }}
+                onKeyDown={(e) => handleBackspace(e)}
+                className={`${
+                  thirdLetter !== "?" && thirdLetter.length > 0
+                    ? "input-entered"
+                    : "input-blank"
+                }`}
+              ></input>
+              <input
+                type='text'
+                maxLength={1}
+                placeholder=''
+                value={fourthLetter.toUpperCase()}
+                onFocus={() => setFourthLetter("")}
+                onChange={(e) => {
+                  setFourthLetter(e.target.value);
+                  handleFocus(e);
+                }}
+                onKeyDown={(e) => handleBackspace(e)}
+                className={`${
+                  fourthLetter !== "?" && fourthLetter.length > 0
+                    ? "input-entered"
+                    : "input-blank"
+                }`}
+              ></input>
+              <input
+                type='text'
+                maxLength={1}
+                placeholder=''
+                value={fifthLetter.toUpperCase()}
+                onFocus={() => setFifthLetter("")}
+                onChange={(e) => {
+                  setFifthLetter(e.target.value);
+                  handleFocus(e);
+                }}
+                onKeyDown={(e) => handleBackspace(e)}
+                className={`${
+                  fifthLetter !== "?" && fifthLetter.length > 0
+                    ? "input-entered"
+                    : "input-blank"
+                }`}
+              ></input>
+            </div>
+          ) : null}
+          <button className='search-button'>Search</button>
+          <div ref={myRef}></div>
+          {possibleWords.length > 0 && searched ? (
+            <p>Refresh page for an entirely new search!</p>
+          ) : null}
+        </form>
+
+        {!onlyYellows && !searched ? (
+          <p
+            onClick={() => handleYellowGreenToggle()}
+            className='toggle-yellow-green-button only-yellows'
+          >
+            I only have yellow letters
+          </p>
+        ) : null}
+        {onlyYellows ? (
+          <p
+            onClick={() => handleYellowGreenToggle()}
+            className='toggle-yellow-green-button have-greens'
+          >
+            I have green letters now
+          </p>
+        ) : null}
+        {possibleWords.length > 0 ? (
+          <h3>Select letters you know aren't in the word:</h3>
+        ) : null}
+        <div className='nonexistent-letter-list'>
+          {allLetters.map((letter, index) => (
+            <LettersToExclude
+              letter={letter}
+              key={index}
+              selectExcludedLetter={selectExcludedLetter}
+              deselectExcludedLetter={deselectExcludedLetter}
+              possibleWords={possibleWords}
+              haveGreen={haveGreen}
+              existentLetters={existentLetters}
+              nonexistentLetters={nonexistentLetters}
+              searched={searched}
+              word={word}
+            />
+          ))}
         </div>
-      ) : null}
-      {!onlyYellows ? <p>Enter your green letters here:</p> : null}
-      <form onSubmit={(e) => handleSubmit(e)}>
-        {!onlyYellows ? (
-          <div className='input-field'>
-            <input
-              type='text'
-              maxLength={1}
-              placeholder=''
-              value={firstLetter.toUpperCase()}
-              onFocus={() => setFirstLetter("")}
-              onChange={(e) => {
-                setFirstLetter(e.target.value);
-                handleFocus(e);
-              }}
-              onKeyDown={(e) => handleBackspace(e)}
-              className={`${
-                firstLetter !== "?" && firstLetter.length > 0
-                  ? "input-entered"
-                  : "input-blank"
-              }`}
-            ></input>
-            <input
-              type='text'
-              maxLength={1}
-              placeholder=''
-              value={secondLetter.toUpperCase()}
-              onFocus={() => setSecondLetter("")}
-              onChange={(e) => {
-                setSecondLetter(e.target.value);
-                handleFocus(e);
-              }}
-              onKeyDown={(e) => handleBackspace(e)}
-              className={`${
-                secondLetter !== "?" && secondLetter.length > 0
-                  ? "input-entered"
-                  : "input-blank"
-              }`}
-            ></input>
-            <input
-              type='text'
-              maxLength={1}
-              placeholder=''
-              value={thirdLetter.toUpperCase()}
-              onFocus={() => setThirdLetter("")}
-              onChange={(e) => {
-                setThirdLetter(e.target.value);
-                handleFocus(e);
-              }}
-              onKeyDown={(e) => handleBackspace(e)}
-              className={`${
-                thirdLetter !== "?" && thirdLetter.length > 0
-                  ? "input-entered"
-                  : "input-blank"
-              }`}
-            ></input>
-            <input
-              type='text'
-              maxLength={1}
-              placeholder=''
-              value={fourthLetter.toUpperCase()}
-              onFocus={() => setFourthLetter("")}
-              onChange={(e) => {
-                setFourthLetter(e.target.value);
-                handleFocus(e);
-              }}
-              onKeyDown={(e) => handleBackspace(e)}
-              className={`${
-                fourthLetter !== "?" && fourthLetter.length > 0
-                  ? "input-entered"
-                  : "input-blank"
-              }`}
-            ></input>
-            <input
-              type='text'
-              maxLength={1}
-              placeholder=''
-              value={fifthLetter.toUpperCase()}
-              onFocus={() => setFifthLetter("")}
-              onChange={(e) => {
-                setFifthLetter(e.target.value);
-                handleFocus(e);
-              }}
-              onKeyDown={(e) => handleBackspace(e)}
-              className={`${
-                fifthLetter !== "?" && fifthLetter.length > 0
-                  ? "input-entered"
-                  : "input-blank"
-              }`}
-            ></input>
-          </div>
+        {possibleWords.length > 0 ? (
+          <h3>Select letters you know are in the word:</h3>
         ) : null}
-        <button className='search-button'>Search</button>
-        <div ref={myRef}></div>
-        {possibleWords.length > 0 && searched ? (
-          <p>Refresh page for an entirely new search!</p>
+        <div className='existent-letter-list'>
+          {allLetters.map((letter, index) => (
+            <LettersToInclude
+              letter={letter}
+              key={index}
+              selectIncludedLetter={selectIncludedLetter}
+              deselectIncludedLetter={deselectIncludedLetter}
+              possibleWords={possibleWords}
+              haveGreen={haveGreen}
+              existentLetters={existentLetters}
+              nonexistentLetters={nonexistentLetters}
+              searched={searched}
+              word={word}
+            />
+          ))}
+        </div>
+        {possibleWords.length > 0 ? <h2>Possible Wordles:</h2> : null}
+        <div className='word-list'>
+          {possibleWords
+            ? possibleWords.map((word, index) => (
+                <div key={index} className='each-word'>
+                  <p>{word.word.toUpperCase()}</p>
+                </div>
+              ))
+            : null}
+        </div>
+        {searched && possibleWords.length === 0 ? (
+          <h3>
+            Looks like there are no words matching that criteria. Refresh page
+            for a new search!
+          </h3>
         ) : null}
-      </form>
-
-      {!onlyYellows && !searched ? (
-        <p
-          onClick={() => handleYellowGreenToggle()}
-          className='toggle-yellow-green-button only-yellows'
-        >
-          I only have yellow letters
+        <p className={`footer-note ${searched ? null : "footer-fixed"}`}>
+          created by{" "}
+          <a
+            href='https://github.com/frivolousvision'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='git-hub-link'
+          >
+            FrivolousVision
+          </a>
         </p>
-      ) : null}
-      {onlyYellows ? (
-        <p
-          onClick={() => handleYellowGreenToggle()}
-          className='toggle-yellow-green-button have-greens'
-        >
-          I have green letters now
-        </p>
-      ) : null}
-      {possibleWords.length > 0 ? (
-        <h3>Select letters you know aren't in the word:</h3>
-      ) : null}
-      <div className='nonexistent-letter-list'>
-        {allLetters.map((letter, index) => (
-          <LettersToExclude
-            letter={letter}
-            key={index}
-            selectExcludedLetter={selectExcludedLetter}
-            deselectExcludedLetter={deselectExcludedLetter}
-            possibleWords={possibleWords}
-            haveGreen={haveGreen}
-            existentLetters={existentLetters}
-            nonexistentLetters={nonexistentLetters}
-            searched={searched}
-            word={word}
-          />
-        ))}
       </div>
-      {possibleWords.length > 0 ? (
-        <h3>Select letters you know are in the word:</h3>
-      ) : null}
-      <div className='existent-letter-list'>
-        {allLetters.map((letter, index) => (
-          <LettersToInclude
-            letter={letter}
-            key={index}
-            selectIncludedLetter={selectIncludedLetter}
-            deselectIncludedLetter={deselectIncludedLetter}
-            possibleWords={possibleWords}
-            haveGreen={haveGreen}
-            existentLetters={existentLetters}
-            nonexistentLetters={nonexistentLetters}
-            searched={searched}
-            word={word}
-          />
-        ))}
-      </div>
-      {possibleWords.length > 0 ? <h2>Possible Wordles:</h2> : null}
-      <div className='word-list'>
-        {possibleWords
-          ? possibleWords.map((word, index) => (
-              <div key={index} className='each-word'>
-                <p>{word.word.toUpperCase()}</p>
-              </div>
-            ))
-          : null}
-      </div>
-      {searched && possibleWords.length === 0 ? (
-        <h3>
-          Looks like there are no words matching that criteria. Refresh page for
-          a new search!
-        </h3>
-      ) : null}
-      <p className={`footer-note ${searched ? null : "footer-fixed"}`}>
-        created by{" "}
-        <a
-          href='https://github.com/frivolousvision'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='git-hub-link'
-        >
-          FrivolousVision
-        </a>
-      </p>
-    </div>
+    </>
   );
 }
