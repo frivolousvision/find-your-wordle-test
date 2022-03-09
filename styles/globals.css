@@ -1,0 +1,87 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica Neue";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+p {
+  color: white;
+}
+h1 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-family: "Merriweather";
+  font-weight: 900;
+  font-size: 3.5rem;
+}
+h2 {
+  font-size: 3rem;
+  font-family: "Merriweather";
+}
+input {
+  width: 6rem;
+  height: 6rem;
+  margin: 1rem;
+  font-size: 6rem;
+  text-align: center;
+  border: 2px solid gray;
+  border-radius: 0;
+  color: white;
+  background-color: black;
+  caret-color: transparent;
+}
+input:focus {
+  border-radius: 0;
+  outline-color: #548c4c;
+  caret-color: transparent;
+}
+button {
+  width: 19rem;
+  height: 4rem;
+  background-color: gray;
+  border: none;
+  border-radius: 2px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+@media only screen and (max-width: 600px) {
+  h1 {
+    margin-top: 2rem;
+  }
+  h2 {
+    margin-bottom: 0px;
+  }
+  input {
+    width: 20%;
+    height: 2.6rem;
+    margin: 0.2rem;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 600px) {
+  h1 {
+    font-size: 6rem;
+  }
+  button:hover {
+    background-color: rgb(61, 61, 61);
+    cursor: pointer;
+  }
+}

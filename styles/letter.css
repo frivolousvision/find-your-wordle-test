@@ -1,0 +1,54 @@
+p {
+  color: white;
+  font-weight: 900;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.25rem;
+  height: 5rem;
+  width: 3rem;
+  border-radius: 2px;
+}
+.nonexistent-not-selected {
+  background-color: gray;
+}
+.nonexistent-selected {
+  background-color: rgb(49, 49, 49);
+}
+.existent-not-selected {
+  background-color: gray;
+}
+.existent-selected {
+  background-color: #b49c3c;
+}
+.disabled {
+  display: none;
+  width: 25%;
+}
+.green-letter {
+  background-color: #548c4c;
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    margin: 0.15rem;
+    height: 3rem;
+    width: 2.25rem;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .container:hover {
+    background-color: rgb(175, 175, 175);
+    cursor: pointer;
+  }
+  .nonexistent-selected:hover {
+    background-color: rgb(49, 49, 49);
+  }
+  .existent-selected:hover {
+    background-color: #b49c3c;
+  }
+  .green-letter:hover {
+    background-color: #548c4c;
+  }
+}

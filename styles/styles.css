@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Rajdhani:wght@300&display=swap");
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: black;
+}
+.only-yellows-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.input-field {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.input-entered {
+  background-color: #548c4c;
+  border: 2px solid #548c4c;
+  border-radius: 0;
+}
+.input-blank {
+  background-color: black;
+}
+.toggle-yellow-green-button {
+  text-decoration: underline;
+  margin-top: 1rem;
+}
+
+.search-button {
+  margin-top: 2.6rem;
+  margin-bottom: 2rem;
+}
+.filter-button {
+  margin-top: 0.5rem;
+  background-color: rgb(16, 81, 221);
+}
+.nonexistent-letter-list {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.existent-letter-list {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.word-list {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.each-word {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+.footer-note {
+  font-family: "Rajdhani", sans-serif;
+  margin-top: 4rem;
+}
+.footer-fixed {
+  position: fixed;
+  bottom: 0;
+}
+.git-hub-link {
+  color: white;
+}
+@media only screen and (max-width: 600px) {
+  .header {
+    transition: 600ms;
+  }
+  .not-searched {
+    margin-top: 6rem;
+  }
+  .searched {
+    margin-top: 2rem;
+  }
+
+  .input-field {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .search-button {
+    margin-bottom: 1rem;
+  }
+  .have-greens {
+    margin-bottom: 3rem;
+  }
+  .nonexistent-letter-list {
+    width: 95%;
+    margin-bottom: 2rem;
+  }
+  .existent-letter-list {
+    width: 95%;
+  }
+  .word-list {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .each-word {
+    margin: 0.8rem;
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
+  }
+  .footer-fixed {
+    margin-bottom: 0.1rem;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .header {
+    transition: 600ms;
+  }
+  .not-searched {
+    margin-top: 12rem;
+  }
+  .searched {
+    margin-top: 2rem;
+  }
+  .only-yellows:hover {
+    color: #b49c3c;
+    cursor: pointer;
+  }
+  .have-greens:hover {
+    color: green;
+    cursor: pointer;
+  }
+}
