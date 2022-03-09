@@ -444,7 +444,7 @@ export default function Home() {
           </p>
         ) : null}
         {possibleWords.length > 0 ? (
-          <h3>Select letters you know aren't in the word:</h3>
+          <h3>Select letters you know aren&apos;t in the word:</h3>
         ) : null}
         <div className='nonexistent-letter-list'>
           {allLetters.map((letter, index) => (
