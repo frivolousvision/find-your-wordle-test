@@ -271,6 +271,7 @@ export default function Home() {
     <>
       <Head>
         <title>Find your Worldle</title>
+        <link rel='shortcut icon' href='../public/WORDLE.png' />
         <meta
           name='description'
           content='Having trouble with your Wordle? Use Find your Wordle to help you solve and find your Wordle!'
