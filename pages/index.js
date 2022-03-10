@@ -271,7 +271,11 @@ export default function Home() {
     <>
       <Head>
         <title>Find your Worldle</title>
-        <link rel='shortcut icon' href='../public/WORDLE.png' />
+        <link rel='icon' tpe='image/png' href='../public/favicon.png' />
+        <meta
+          name='google-site-verification'
+          content='sy9Ztys_ue9uoXE-P0RH-3vCSajcbgjZYSg1ZhhOEgE'
+        />
         <meta
           name='description'
           content='Having trouble with your Wordle? Use Find your Wordle to help you solve and find your Wordle!'
