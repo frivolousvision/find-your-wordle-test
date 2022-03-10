@@ -275,7 +275,10 @@ export default function Home() {
           name='description'
           content='Having trouble with your Wordle? Use Find your Wordle to help you solve and find your Wordle!'
         />
-        <meta name='keywords' content='' />
+        <meta
+          name='keywords'
+          content='Wordle, Wordle Solver, Wordle Answers, Solve Wordle, Find Your Wordle, Wordle Finder'
+        />
         <meta itemProp='name' content='Find your Worldle' />
         <meta
           itemProp='description'
